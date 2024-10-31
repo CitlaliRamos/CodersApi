@@ -5,12 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use App\Traits\ApiTrait;
+
 class Post extends Model
 {
     //
-    use HasFactory;
+    use HasFactory, ApiTrait;
 
-    protected $fillable = ['name', 'slug', 'stract', 'body', 'status', 'categoria_id', 'user_id'];
+    protected $fillable = ['nombre', 'slug', 'extracto', 'cuerpo', 'status', 'categoria_id', 'user_id'];
+
+    protected $allowIncluded = ['categoria', 'user'];
+    protected $allowFilter = ['id', 'nombre', 'slug'];
+    protected $allowSort = ['id', 'nombre', 'slug'];
     
     const BORRADOR = 1;
     const PUBLICADO = 2;
