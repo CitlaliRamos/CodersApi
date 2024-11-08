@@ -20,7 +20,8 @@ class PostController extends Controller implements HasMiddleware
     public static function middleware(): array
     {
         return [
-            new Middleware(middleware: 'auth:api', except: ['index', 'show','store','destroy', 'update']),
+            //new Middleware(middleware: 'auth:api', except: ['index', 'show','store','destroy', 'update']),
+            new Middleware(middleware: 'auth:api', except: ['index', 'show']),
         ];
     }
     /**
@@ -51,9 +52,8 @@ class PostController extends Controller implements HasMiddleware
             
         ]);//'user_id'=> 'required|exists:users,id'
 
-        //$user = auth()->user();
-        //$data['user_id'] = $user->id;
-        $data['user_id'] = 1;
+        $user = auth()->user();
+        $data['user_id'] = $user->id;
 
         $post = Post::create($data);
         return PostResource::make($post);

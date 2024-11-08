@@ -75,6 +75,7 @@ trait ApiTrait{
             }
         }
     }
+    
     public function scopeGetOrPaginate(Builder $query){
         if(request('perPage')){
             $perPage=intval(request('perPage'));

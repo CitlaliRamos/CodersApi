@@ -1,10 +1,14 @@
 <?php
 
 use App\Http\Controllers\Api\CategoriaController;
+use App\Http\Controllers\Api\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\RegisterController;
-use App\Http\Controllers\Api\PostController;
+use App\Http\Controllers\Api\Auth\RegisterController;
+use App\Http\Controllers\Api\Auth\LoginController;
+
+Route::post('login', [LoginController::class, 'store']);
+
 
 Route::post('register', [RegisterController::class, 'store'])->name('api.register');
 
@@ -20,4 +24,4 @@ Route::apiResource('posts',PostController::class)->names('api.posts');
 
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
-// })->middleware('auth:api');
+// })->middleware('auth:api'); 

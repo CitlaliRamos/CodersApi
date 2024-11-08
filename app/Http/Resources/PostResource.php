@@ -21,10 +21,9 @@ class PostResource extends JsonResource
             'slug' => $this->slug,
             'extracto' => $this->extracto,
             'cuerpo' => $this->cuerpo,
-            'status' => $this->status,
-            'categoria_id' => $this->categoria_id,
+            'status' => $this->status == 1 ? 'BORRADOR' : 'PUBLICADO',
             'user' => UserResource::make($this->whenLoaded('user')),
             'categoria' => CategoriaResource::make($this->whenLoaded('categoria'))
-        ];//'status' => $this->status == 1 ? 'BORRADOR' : 'PUBLICADO',
+        ];//
     }
 }

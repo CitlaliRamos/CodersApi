@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Api;
+namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+
+use App\Http\Resources\UserResource;
 
 class RegisterController extends Controller
 {
@@ -17,7 +19,17 @@ class RegisterController extends Controller
         ]);
         
         $user = User::create($request->all());
+        //return response($user, 200);
+        return UserResource::make($user);
 
-        return response($user, 200);
+        
+        /*$user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
+        ]);
+
+        return UserResource::make($user);*/
+        
     }
 }
