@@ -22,6 +22,7 @@ class PostResource extends JsonResource
             'extracto' => $this->extracto,
             'cuerpo' => $this->cuerpo,
             'status' => $this->status == 1 ? 'BORRADOR' : 'PUBLICADO',
+            'categoria_id'=> $this->categoria_id,
             'user' => UserResource::make($this->whenLoaded('user')),
             'categoria' => CategoriaResource::make($this->whenLoaded('categoria'))
         ];//

@@ -23,5 +23,4 @@ class Categoria extends Model
         return $this->hasMany(Post::class);
     }
 
-    
 }
